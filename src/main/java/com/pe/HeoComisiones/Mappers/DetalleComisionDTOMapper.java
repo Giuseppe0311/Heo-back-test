@@ -44,7 +44,7 @@ public class DetalleComisionDTOMapper implements Function<DetalleComisiones, Det
                 detalleComisiones.getUsuarios().getEmail(),
                 detalleComisiones.getUsuarios().getDni(),
                 //obten el nombre del perfil ,
-                detalleComisiones.getUsuarios().getProfiles().stream().map(Perfiles::getName).collect(Collectors.joining(","))
+                detalleComisiones.getUsuarios().getProfiles().stream().map(Perfiles::getName).findFirst().orElse("")
         );
         return new DetalleComisionDTO(
                 detalleComisiones.getId(),
