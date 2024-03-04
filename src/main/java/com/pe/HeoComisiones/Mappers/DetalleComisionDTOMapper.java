@@ -2,6 +2,7 @@ package com.pe.HeoComisiones.Mappers;
 
 import com.pe.HeoComisiones.DTOs.*;
 import com.pe.HeoComisiones.Entity.DetalleComisiones;
+import com.pe.HeoComisiones.Entity.Perfiles;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -41,7 +42,9 @@ public class DetalleComisionDTOMapper implements Function<DetalleComisiones, Det
                 detalleComisiones.getUsuarios().getId(),
                 detalleComisiones.getUsuarios().getName(),
                 detalleComisiones.getUsuarios().getEmail(),
-                detalleComisiones.getUsuarios().getDni()
+                detalleComisiones.getUsuarios().getDni(),
+                //obten el nombre del perfil ,
+                detalleComisiones.getUsuarios().getProfiles().stream().map(Perfiles::getName).collect(Collectors.joining(","))
         );
         return new DetalleComisionDTO(
                 detalleComisiones.getId(),
